@@ -1,0 +1,17 @@
+{
+  "name": "irl-rpg-client",
+  "version": "0.0.1",
+  "description": "Client side code for IRL-RPG game",
+  "main": "app.js",
+  "author": "Johan Andersson",
+  "license": "ISC",
+  "dependencies": {
+    "director": "^1.2.8",
+    "superagent": "^0.21.0",
+    "vue": "^0.11.5"
+  },
+  "devDependencies": {
+    "insert-css": "^0.2.0",
+    "vueify": "^1.1.0"
+  }
+}

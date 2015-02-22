@@ -1,0 +1,14 @@
+{
+  "name": "irl-rpg-server",
+  "version": "0.0.1",
+  "description": "Server code for IRL-RPG game",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.10.0",
+    "express": "^4.10.4",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {},
+  "author": "Johan Andersson",
+  "license": "ISC"
+}
