@@ -5,6 +5,9 @@
   "main": "app.js",
   "author": "Johan Andersson",
   "license": "ISC",
+  "scripts": {
+      "build": "browserify -d -t vueify -e main.js -o build/build.js"
+  },
   "dependencies": {
     "director": "^1.2.8",
     "superagent": "^0.21.0",

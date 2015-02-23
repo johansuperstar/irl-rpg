@@ -1,3 +1,4 @@
+<style>
 body {
     margin: 0 auto;
     max-width: 900px;
@@ -22,6 +23,7 @@ ul { list-style: none; }
     display: inline-block;
     text-align: center;
     text-decoration: none;
+    color: #000;
 }
 
 .button-full-width { width: 100%; }
@@ -141,3 +143,23 @@ ul { list-style: none; }
     color: rgb(92, 184, 92);
     font-weight: bold;
 }
+
+</style>
+
+<template>
+<div v-component="player"></div>
+<div style="width: 100%;" v-component={{view}}></div>
+</template>
+
+<script>
+module.exports = {
+    el: '#app',
+    data: {
+        view: ''
+    },
+    components: {
+        'play-view': require('./views/play-view.vue'),
+        player: require('./components/player.vue')
+    }
+};
+</script>

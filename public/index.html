@@ -3,82 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <title>IRL-RPG</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="normalize.css" />
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="app" v-cloak>
-        <div class="character">
-            <img src="avatars/commissar_avatar.png" alt="{{player.avatar}}" class="avatar" />
-            <h2 class="character-name">{{player.name}}</h2>
-            <span class="character-level">{{player.level}}</span>
-
-            <div class="stats">
-                <div v-repeat="stat: player.stats" class="stat">
-                    <span class="stat-name">{{stat.stat}}:</span>
-                    <span>{{stat.value}}</span>
-                </div>
-            </div>
-
-            <div class="xp">
-                <p style="float: left; margin-right: 15px; font-size: 0.9em;">XP: {{player.xp}} / {{player.xpForNextLevel}}</p>
-
-                <div class="xp-bar">
-                    <div class="xp-bar-inner" style="width: {{xpPercent}}%;"></div>
-                </div>
-            </div>
-
-            <div class="coins" style="font-size: 0.9em;">
-                Coins: {{player.coins}}
-            </div>
-
-            <div>
-                <a href="#/settings">Settings</a>
-            </div>
-        </div>
-        <div style="width: 100%;">
-            <div class="half">
-                <ul class="activities-list">
-                    <li v-repeat="activity: activities" class="activity">
-                        <p v-show="activity.completedToday" class="completed-today">
-                            <span>&#10003;</span>
-                            Completed today
-                        </p>
-                        <h3>{{activity.name}}</h3>
-                        <button class="button" style="float: right;"
-                            v-on="click: performActivity(activity)"
-                            v-attr="disabled: activity.completedToday">
-                            <span>&#10003;</span>
-                        </button>
-                        <p v-repeat="gain: activity.gains">
-                            <span style="font-size: 24px;">+{{gain.value}}</span> {{gain.stat}}
-                        </p>
-                    </li>
-                </ul>
-                <a class="button button-full-width button-green" href="#/new-activity">Add new</a>
-            </div>
-
-            <div class="half">
-                <ul class="treats-list">
-                    <li v-repeat="treat: treats" class="activity">
-                        <h3>{{treat.name}}</h3>
-                        <button class="button" style="float: right;"
-                            v-on="click: performActivity(treat)"
-                            v-attr="disabled: activity.completedToday">
-                            <span>&#10003;</span>
-                        </button>
-                        <p>
-                            Cost: {{treat.cost}}
-                        </p>
-                    </li>
-                </ul>
-                <a class="button button-full-width button-green" href="#/new-treat">Add new</a>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript" src="./node_modules/vue/dist/vue.min.js"></script>
-    <script type="text/javascript" src="./node_modules/superagent/superagent.js"></script>
-    <script type="text/javascript" src="./node_modules/director/build/director.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
+    <div id="app" v-cloak></div>
+    <script src="build/build.js"></script>
   </body>
 </html>
