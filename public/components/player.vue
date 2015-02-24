@@ -34,17 +34,8 @@
 </template>
 
 <script>
-var request = require('superagent');
-
 module.exports = {
-    data: function() {
-        return {
-            player: ''
-        };
-    },
-    compiled: function() {
-        this.getPlayer();
-    },
+    replace: true,
     computed: {
         xpPercent: function () {
             return (
@@ -52,15 +43,6 @@ module.exports = {
                 /
                 (this.player.xpForNextLevel - this.player.xpForThisLevel)
             ) * 100;
-        }
-    },
-    methods: {
-        getPlayer: function() {
-            var self = this;
-            request.get('api/player')
-                .end(function(res) {
-                    self.player = res.body;
-                });
         }
     }
 };

@@ -35,6 +35,9 @@ module.exports = {
             return false;
         }
     },
+    created: function() {
+        this.$dispatch('hello', this);
+    },
     methods: {
         performActivity: function(activity) {
             var self = this;
@@ -42,10 +45,9 @@ module.exports = {
             request.post('api/activity/complete')
                 .send(activity)
                 .end(function(res) {
-                    
                     var player = res.body;
 
-                    // TODO: Send event to with new player data
+                    self.$dispatch('player-updated', player);
 
                     activity.completedToday = true;
                 });

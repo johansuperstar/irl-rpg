@@ -147,19 +147,52 @@ ul { list-style: none; }
 </style>
 
 <template>
-<div v-component="player"></div>
-<div style="width: 100%;" v-component={{view}}></div>
+<div v-component="dialog-box" v-with="message: message"></div>
+<div v-component="player" v-with="player: player"></div>
+<div v-component={{view}}></div>
 </template>
 
 <script>
+var request = require('superagent');
+
 module.exports = {
     el: '#app',
     data: {
-        view: ''
+        view: '',
+        player: '',
+        message: {
+            heading: '',
+            text: ''
+        }
+    },
+    created: function () {
+        this.$on('player-updated', function(player) {
+            if (player.level > this.player.level) {
+                this.message = {
+                    heading: 'Congratulations!',
+                    text: 'You are now level ' + player.level
+                };
+            }
+
+            this.player = player;
+        });
+    },
+    compiled: function() {
+        this.loadPlayer();
+    },
+    methods: {
+        loadPlayer: function() {
+            var self = this;
+            request.get('api/player')
+                .end(function(res) {
+                    self.player = res.body;
+                });
+        }
     },
     components: {
         'play-view': require('./views/play-view.vue'),
-        player: require('./components/player.vue')
+        'player': require('./components/player.vue'),
+        'dialog-box': require('./components/dialog-box.vue')
     }
 };
 </script>
